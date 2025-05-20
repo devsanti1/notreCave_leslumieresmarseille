@@ -1,0 +1,168 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+* {
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+}
+
+body {
+  background-color: gray;
+}
+
+.page {
+  position: relative;
+  height: 29.7cm;
+  width: 21cm;
+  padding: 2cm;
+  margin: 0 auto;
+  margin-bottom: 2cm;
+  background-color: white;
+  overflow: hidden;
+  display: flex;
+  flex-flow: row wrap;
+  align-content: start;
+  gap: 2mm;
+}
+
+#page0 {
+  align-content: center;
+}
+
+.ttl {
+  font-family: "Mansalva", serif;
+  font-weight: bold;
+  font-size: 36pt;
+  margin-bottom: 1cm;
+}
+
+.luz {
+  position: absolute;
+  top: 2cm;
+  right: 2cm;
+  height: 5cm;
+}
+
+.botellas {
+  width: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+.botellas>img {
+  width: 25%;
+  flex: 1 1 25%;
+}
+
+.indice {
+  position: absolute;
+  bottom: 1cm;
+  right: 2cm;
+}
+
+.lista {
+  display: flex;
+  flex-flow: row wrap;
+  gap: 5mm;
+  list-style-type: none;
+  padding: 0;
+}
+
+.lista>li {
+  width: calc(50% - 5mm);
+  padding-bottom: 2mm;
+  border-bottom: 0.5mm darkred solid;
+}
+
+.lista>li>span {
+  font-size: 12pt !important;
+  margin-bottom: 2mm;
+}
+
+.lista>li>ul>li {
+  font-size: 10pt !important;
+  color: gray;
+}
+
+.lista>li>ul>li,
+.lista>li>span {
+  display: flex;
+  justify-content: space-between;
+}
+
+.reg,
+.cat {
+  flex: 1 0 100%;
+  text-align: center;
+  font-style: italic;
+}
+
+.card {
+  border-bottom: 0.5mm darkred solid;
+  padding: 2mm;
+  display: flex;
+  flex-direction: column;
+  flex: 1 0 calc(50% - 2mm);
+}
+
+.orange {
+  border-bottom: 0.5mm darkorange solid !important;
+}
+
+.bulles {
+  border-bottom: 0.5mm rgb(253, 203, 110) solid !important;
+}
+
+.blancs {
+  border-bottom: 0.5mm rgb(246, 246, 100) solid !important;
+}
+
+.roses {
+  border-bottom: 0.5mm hotpink solid !important;
+}
+
+
+.price {
+  white-space: nowrap;
+  color: darkred;
+  margin-left: 2mm;
+}
+
+.card-header {
+  font-size: 12pt !important;
+  display: flex;
+  justify-content: space-between;
+  flex-grow: 1;
+}
+
+.card-footer {
+  font-size: 10pt !important;
+  color: gray;
+  display: flex;
+  flex-direction: column;
+}
+
+@media print {
+  body {
+    background-color: white;
+    padding: 0;
+  }
+
+  .page {
+    position: relative;
+    height: 29.7cm;
+    width: 21cm;
+    padding: 2cm;
+    page-break-after: always;
+  }
+
+  .indice {
+    position: absolute;
+    bottom: 1cm;
+    right: 2cm;
+  }
+
+  @page {
+    size: A4;
+    margin: 0mm;
+  }
+}
