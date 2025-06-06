@@ -1,0 +1,107 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+* {
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+}
+
+body {
+  background-color: gray;
+}
+
+.page {
+  position: relative;
+  height: 29.7cm;
+  width: 21cm;
+  padding: 2cm;
+  margin: 0 auto;
+  margin-bottom: 2cm;
+  background-color: white;
+  overflow: hidden;
+  display: flex;
+  flex-flow: row wrap;
+  align-content: center;
+}
+
+.card {
+  padding: 2mm;
+  display: flex;
+  flex-direction: column;
+  width: 7cm;
+  height: 4cm;
+  border: 0.2mm solid black;
+}
+
+.card>div>div {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+}
+
+.rouges>div>div>.point {
+  border: 1.5mm solid darkred;
+}
+
+.orange>div>div>.point {
+  border: 1.5mm solid darkorange;
+}
+
+.bulles>div>div>.point {
+  border: 1.5mm solid rgb(253, 203, 110);
+}
+
+.blancs>div>div>.point {
+  border: 1.5mm solid rgb(246, 246, 100);
+}
+
+.roses>div>div>.point {
+  border: 1.5mm solid hotpink;
+}
+
+
+.price {
+  white-space: nowrap;
+  color: darkred;
+  margin-left: 2mm;
+}
+
+.point {
+  display: inline-block;
+  width: 6mm;
+  height: 6mm;
+  border-radius: 50%;
+}
+
+.card-header {
+  font-size: 12pt !important;
+  display: flex;
+  justify-content: space-between;
+  flex-grow: 1;
+}
+
+.card-footer {
+  font-size: 10pt !important;
+  color: gray;
+  display: flex;
+  flex-direction: column;
+}
+
+@media print {
+  body {
+    background-color: white;
+    padding: 0;
+  }
+
+  .page {
+    position: relative;
+    height: 29.7cm;
+    width: 21cm;
+    padding: 2cm;
+    page-break-after: always;
+  }
+
+  @page {
+    size: A4;
+    margin: 0mm;
+  }
+}
