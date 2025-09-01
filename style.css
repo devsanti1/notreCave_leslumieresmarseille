@@ -39,7 +39,7 @@ body {
   position: absolute;
   top: 2cm;
   right: 2cm;
-  height: 5cm;
+  height: 4.5cm;
 }
 
 .botellas {
@@ -60,15 +60,16 @@ body {
 }
 
 .lista {
-  display: flex;
-  flex-flow: row wrap;
-  gap: 5mm;
+  column-count: 2;
+  column-gap: 5mm;
+  width: 100%;
   list-style-type: none;
   padding: 0;
 }
 
 .lista>li {
-  width: calc(50% - 5mm);
+  break-inside: avoid;
+  margin-bottom: 5mm;
   padding-bottom: 2mm;
   border-bottom: 0.5mm darkred solid;
 }
@@ -76,15 +77,13 @@ body {
 .lista>li>span {
   font-size: 12pt !important;
   margin-bottom: 2mm;
+  display: flex;
+  justify-content: space-between;
 }
 
 .lista>li>ul>li {
   font-size: 10pt !important;
   color: gray;
-}
-
-.lista>li>ul>li,
-.lista>li>span {
   display: flex;
   justify-content: space-between;
 }

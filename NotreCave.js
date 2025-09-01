@@ -122,7 +122,7 @@ window.onload = () => {
           <span class="terroir">${x.terroir}</span>
         </div>
         `
-        if (x.cepage.includes("❂")) {
+        if (x.category === "Vins de Macération") {
           vino.classList.add('orange')
         } else if (x.category === "Les Bulles") {
           vino.classList.add('bulles')
@@ -186,9 +186,8 @@ window.onload = () => {
       }
       let lista = document.createElement("ul")
       lista.classList.add('lista')
+      console.log(categoriesO);
       categoriesO.shift()
-      categoriesO.splice(1, 0, categoriesO[2])
-      categoriesO.splice(3, 1)
       categoriesO.map(x => {
         let iCat = document.createElement('li')
         if (x.catName.replaceAll("-", "").trim() === "Les Bulles") {
@@ -197,6 +196,8 @@ window.onload = () => {
           iCat.classList.add('blancs')
         } else if (x.catName.replaceAll("-", "").trim() === "Vins Rosés") {
           iCat.classList.add('roses')
+        } else if (x.catName.replaceAll("-", "").trim() === "Vins de Macération") {
+          iCat.classList.add('orange', 'd-none')
         }
         let iTitle = document.createElement("span")
         iTitle.innerHTML = `<span>${x.catName.replaceAll("-", "").trim()}</span><span>p${x.pageInit} - p${x.pageFin}</span>`
@@ -225,11 +226,11 @@ window.onload = () => {
       indice.appendChild(lista)
       let botellas = document.createElement("div")
       botellas.classList.add('botellas')
-      categoriesO.map(x => {
+      while (botellas.children.length < 4) {
         let botella = document.createElement('img')
         botella.src = './botella.png'
         botellas.appendChild(botella)
-      })
+      }
       indice.appendChild(botellas)
     })
     .catch(error => console.error('Error fetching CSV:', error));
