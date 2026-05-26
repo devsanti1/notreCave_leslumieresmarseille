@@ -14,7 +14,11 @@ window.onload = () => {
     currentPage.appendChild(cat)
     let reg = document.createElement("span")
     reg.classList.add("reg")
-    reg.innerText = currentReg !== "" ? `- ${currentReg}, ${currentCount} -` : `- ${currentCount} -`
+    if (currentReg === "VIN DE FRANCE (VDF)") {
+      reg.innerText = `- ${currentReg} -`
+    } else {
+      reg.innerText = currentReg !== "" ? `- ${currentReg}, ${currentCount} -` : `- ${currentCount} -`
+    }
     currentPage.appendChild(reg)
     winelist.appendChild(currentPage)
     i++
@@ -23,13 +27,12 @@ window.onload = () => {
   let winelist = document.getElementById("wine-list")
 
 
-  const csvUrl = 'https://docs.google.com/spreadsheets/d/1PFlgyrA8CWxwKSIBEkv_MwEcHHX5pGJ95_A1eFwd2P4/export?format=csv';
 
+  // OBTENER DATOS DESDE GOOGLE SHEETS COMO CSV
+  const csvUrl = 'https://docs.google.com/spreadsheets/d/1PFlgyrA8CWxwKSIBEkv_MwEcHHX5pGJ95_A1eFwd2P4/export?format=csv';
   fetch(csvUrl)
     .then(response => response.text())
     .then(csvText => {
-      console.log(csvText);
-
       // Parse CSV handling commas inside quoted fields
       function parseCSV(text) {
         const rows = [];
@@ -69,10 +72,7 @@ window.onload = () => {
         return rows;
       }
       const rows = parseCSV(csvText);
-
       let data = [];
-      console.log(rows);
-
       rows.forEach((row, index) => {
         if (index === 0) {
           return;
@@ -90,8 +90,16 @@ window.onload = () => {
         };
         data.push(wineData);
       });
-      console.log(data);
+      data = data.filter((x) => {
+        if (x.stock === true) {
+          if (x.origin.includes("VDF")) {
+            x.region = "VIN DE FRANCE (VDF)"
+          }
+          return true
+        }
+      })
 
+      // INDICE
       let indice = createPage("Indice", "x", "x")
       indice.removeChild(indice.firstChild)
       indice.removeChild(indice.lastChild)
@@ -103,7 +111,8 @@ window.onload = () => {
       luz.classList.add('luz')
       luz.src = "./luz.png"
       indice.appendChild(luz)
-      data = data.filter(x => x.stock === true)
+
+      //PAGINACIÓN
       let currentCat = data[0].category
       let currentCount = data[0].country
       let currentReg = data[0].region
@@ -138,7 +147,11 @@ window.onload = () => {
         let reg = document.createElement("span")
         if ((currentReg !== x.region || currentCount !== x.country) && !currentPage.lastChild.classList.contains("reg")) {
           reg.classList.add("reg")
-          reg.innerText = x.region !== "" ? `- ${x.region}, ${x.country} -` : `- ${x.country} -`
+          if (x.region === "VIN DE FRANCE (VDF)") {
+            reg.innerText = `- ${x.region} -`
+          } else {
+            reg.innerText = x.region !== "" ? `- ${x.region}, ${x.country} -` : `- ${x.country} -`
+          }
           currentPage.appendChild(reg)
           if (currentPage.scrollHeight > currentPage.clientHeight) {
             currentPage.removeChild(reg);
@@ -160,7 +173,7 @@ window.onload = () => {
       })
 
 
-
+      // INDICE
       let categories = document.getElementsByClassName("cat")
       let categoriesO = []
       for (let x = 0; x < categories.length; x++) {
@@ -186,7 +199,6 @@ window.onload = () => {
       }
       let lista = document.createElement("ul")
       lista.classList.add('lista')
-      console.log(categoriesO);
       categoriesO.shift()
       categoriesO.map(x => {
         let iCat = document.createElement('li')
