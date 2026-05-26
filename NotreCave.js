@@ -92,7 +92,7 @@ window.onload = () => {
       });
       data = data.filter((x) => {
         if (x.stock === true) {
-          if (x.origin.includes("VDF")) {
+          if (x.origin.includes("VDF") || x.origin.includes("VSIG")) {
             x.region = "VIN DE FRANCE (VDF)"
           }
           return true
