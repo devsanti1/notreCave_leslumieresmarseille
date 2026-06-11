@@ -98,6 +98,7 @@ window.onload = () => {
           return true
         }
       })
+      console.log(data.filter(x => x.region === "VIN DE FRANCE (VDF)").length);
 
       // INDICE
       let indice = createPage("Indice", "x", "x")
