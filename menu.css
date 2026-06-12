@@ -36,7 +36,6 @@ body {
   max-width: 600px;
   width: calc(600px * var(--scale));
   height: calc(851px * var(--scale));
-  overflow: hidden;
   background: transparent;
 }
 
@@ -60,7 +59,6 @@ body {
   display: flex;
   flex-flow: row wrap;
   align-content: start;
-  overflow: hidden;
 }
 
 
