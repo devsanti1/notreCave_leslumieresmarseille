@@ -22,7 +22,10 @@ window.onload = () => {
       <span>leslumieres_marseille</span>
     `
     currentPage.appendChild(insta)
-    menu.appendChild(currentPage)
+    const pagew = document.createElement("div")
+    pagew.classList.add("page-wrapper")
+    pagew.appendChild(currentPage)
+    menu.appendChild(pagew)
     i++
     return currentPage
   }
@@ -94,15 +97,15 @@ window.onload = () => {
       let platos = data.filter(x => x.tipo === "Plato")
 
       // PORTADA
-      let portada = createPage("Portada", "x", "x")
-      portada.innerHTML = `
+      let currentPage = createPage("Portada", "x", "x")
+      currentPage.innerHTML = `
         <span class="ttl">Menu Les Lumières</span>
       `
 
       //PAGINACIÓN
       let currentSec = secciones.filter(x => x.seccion === platos[0].seccion.split("-")[0])[0]
       let currentSub = categorias.filter(x => x.seccion === platos[0].seccion)[0]
-      let currentPage = createPage(currentSec, currentSub)
+      currentPage = createPage(currentSec, currentSub)
       let sub = document.createElement("div")
       sub.classList.add("sub")
       sub.innerText = currentSub.contenido?.toLowerCase()
