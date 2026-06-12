@@ -17,9 +17,9 @@ body {
 #menu {
   width: 90vw;
   /* primero responsive */
-  max-width: 600px;
+  max-width: 14.8cm;
   /* límite físico */
-  --scale: min(calc(90vw / 600px), 1);
+  --scale: min(calc(90vw / 14.8cm), 1);
 
   /* escala basada en el ancho A5 */
   display: flex;
@@ -33,9 +33,10 @@ body {
 
 .page-wrapper {
   position: relative;
-  max-width: 600px;
-  width: calc(600px * var(--scale));
-  height: calc(851px * var(--scale));
+  max-width: 14.8cm;
+  width: calc(14.8cm * var(--scale));
+  height: calc(21cm * var(--scale));
+  overflow: hidden;
   background: transparent;
 }
 
@@ -47,9 +48,9 @@ body {
   top: 0;
   left: 0;
 
-  width: 600px;
-  height: 851px;
-  padding: 61px;
+  width: 14.8cm;
+  height: 21cm;
+  padding: 1.5cm;
 
   background-color: #eae3d0;
 
@@ -59,6 +60,7 @@ body {
   display: flex;
   flex-flow: row wrap;
   align-content: start;
+  overflow: hidden;
 }
 
 
@@ -70,7 +72,7 @@ body {
   font-family: "Mansalva", serif;
   font-weight: bold;
   font-size: 25pt;
-  margin-bottom: 41px;
+  margin-bottom: 1cm;
   text-align: center;
   width: 100%;
 }
@@ -91,7 +93,7 @@ body {
 .sec2 {
   display: block !important;
   column-count: 2;
-  column-gap: 80px;
+  column-gap: 40px;
 }
 
 .sec2>.sec {
@@ -133,7 +135,7 @@ body {
 
 .insta {
   position: absolute;
-  bottom: 20px;
+  bottom: 0.5cm;
   left: 0;
   width: 100%;
   font-size: 9pt;
