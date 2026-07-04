@@ -113,7 +113,7 @@ body {
 }
 
 .sub>div>span {
-  font-size: 10pt;
+  font-size: 8pt;
   padding-top: 2mm;
   font-weight: bold;
   text-transform: capitalize;
@@ -151,7 +151,7 @@ body {
 }
 
 .card-header {
-  font-size: 8pt !important;
+  font-size: 7pt !important;
   display: flex;
   justify-content: space-between;
 }
