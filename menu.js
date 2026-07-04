@@ -100,6 +100,7 @@ window.onload = () => {
       let currentPage = createPage("Portada", "x", "x")
       currentPage.innerHTML = `
         <span class="ttl">Menu Les Lumières</span>
+        <img src="./evento.jpg" alt="" style="width: 100%">
       `
 
       //PAGINACIÓN
@@ -108,7 +109,13 @@ window.onload = () => {
       currentPage = createPage(currentSec, currentSub)
       let sub = document.createElement("div")
       sub.classList.add("sub")
-      sub.innerText = currentSub.contenido?.toLowerCase()
+      sub.classList.add("card")
+      sub.innerHTML = `
+        <div class="card-header">
+            <span class="">${currentSub.contenido}</span>
+            <i class="">${currentSub.info.replaceAll("_", "<br/>")}</i>
+        </div>
+        `
       currentPage.appendChild(sub)
       platos.map((x, id) => {
         const plato = document.createElement("div")
@@ -129,14 +136,26 @@ window.onload = () => {
           sub = document.createElement("div")
           currentSub = categorias.filter(z => z.seccion === x.seccion)[0]
           sub.classList.add("sub")
-          sub.innerText = currentSub.contenido?.toLowerCase()
+          sub.classList.add("card")
+          sub.innerHTML = `
+        <div class="card-header">
+            <span class="platoName">${currentSub.contenido}</span>
+            <i class="infoPlato">${currentSub.info.replaceAll("_", "<br/>")}</i>
+        </div>
+        `
           currentPage.appendChild(sub)
         }
         if (currentSub.seccion !== x.seccion) {
           sub = document.createElement("div")
           currentSub = categorias.filter(z => z.seccion === x.seccion)[0]
           sub.classList.add("sub")
-          sub.innerText = currentSub.contenido?.toLowerCase()
+          sub.classList.add("card")
+          sub.innerHTML = `
+        <div class="card-header">
+            <span class="platoName">${currentSub.contenido}</span>
+            <i class="infoPlato">${currentSub.info.replaceAll("_", "<br/>")}</i>
+        </div>
+        `
           currentPage.appendChild(sub)
         }
         if (currentPage.scrollHeight > currentPage.clientHeight) {
