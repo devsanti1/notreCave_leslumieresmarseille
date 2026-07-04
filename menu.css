@@ -125,7 +125,7 @@ body {
 }
 
 .card {
-  padding: 0mm;
+  padding: 0 mm;
   margin-top: 1mm;
   display: flex;
   flex-direction: column;
